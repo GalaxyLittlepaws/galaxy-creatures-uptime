@@ -22,17 +22,17 @@
     "url": "$SITE_API",
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "galaxy-s-creatures-api",
-    "status": "down",
+    "status": "up",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 0,
-    "timeDay": 0,
-    "timeWeek": 0,
-    "timeMonth": 0,
-    "timeYear": 0,
+    "time": 244,
+    "timeDay": 244,
+    "timeWeek": 244,
+    "timeMonth": 244,
+    "timeYear": 244,
     "dailyMinutesDown": {}
   }
 ]
