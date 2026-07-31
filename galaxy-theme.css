@@ -1,21 +1,24 @@
 /* Galaxy's Creatures — status page theme.
    Dark mode using the daisyUI "forest" palette from galaxyscreatures.com,
    with a matching cosmic starfield background.
-   Loaded from this repo's assets/ via the status site (see themeUrl). */
+   Loaded from this repo's assets/ via the status site (see themeUrl).
+   Note: this file loads BEFORE status-page's global.css, so rules that must
+   beat global.css use the `html` prefix, and scoped component overrides use
+   `!important`. */
 
 :root {
   --body-background-color: #1b1717;
   --body-text-color: #cac9c9;
   --card-background-color: #161212;
   --nav-background-color: #110d0d;
-  --nav-border-bottom-color: #110d0d;
+  --nav-border-bottom-color: rgba(202, 201, 201, 0.1);
   --nav-current-border-bottom-color: #1fb854;
-  --card-border-color: #110d0d;
+  --card-border-color: #2a2323;
   --down-border-left-color: #ff5861;
-  --down-background-color: #4a1d20;
+  --down-background-color: #3a1a1e;
   --degraded-border-left-color: #ffbe00;
   --up-border-left-color: #00a96e;
-  --tag-color: #1b1717;
+  --tag-color: #0d0a0a;
   --tag-up-background-color: #00a96e;
   --tag-down-background-color: #ff5861;
   --tag-degraded-background-color: #ffbe00;
@@ -28,14 +31,16 @@
   --submit-button-color: #ffffff;
   --graph-opacity: 1;
 
-  /* Cosmic atmosphere, matching GalaxysCreatures starfield */
-  --gc-glow-primary: rgba(31, 184, 84, 0.12);
-  --gc-glow-secondary: rgba(30, 184, 142, 0.1);
-  --gc-glow-accent: rgba(31, 184, 171, 0.08);
-  --gc-star: rgba(202, 201, 201, 0.07);
+  /* Cosmic atmosphere */
+  --gc-glow-primary: rgba(31, 184, 84, 0.16);
+  --gc-glow-secondary: rgba(30, 184, 142, 0.13);
+  --gc-glow-accent: rgba(31, 184, 171, 0.11);
+  --gc-star: rgba(202, 201, 201, 0.1);
 }
 
-body {
+/* Cosmic starfield. `html body` outranks global.css' `body` background
+   shorthand, which would otherwise reset our background-image. */
+html body {
   background-image:
     radial-gradient(1000px 520px at 12% 8%, var(--gc-glow-primary), transparent 72%),
     radial-gradient(840px 460px at 88% 82%, var(--gc-glow-secondary), transparent 74%),
@@ -43,7 +48,205 @@ body {
     radial-gradient(circle at 18% 22%, var(--gc-star) 0 1px, transparent 1.5px),
     radial-gradient(circle at 77% 36%, var(--gc-star) 0 1px, transparent 1.5px),
     radial-gradient(circle at 42% 68%, var(--gc-star) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 61% 14%, var(--gc-star) 0 1px, transparent 1.5px);
+    radial-gradient(circle at 61% 14%, var(--gc-star) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 33% 84%, var(--gc-star) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 5% 55%, var(--gc-star) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 92% 10%, var(--gc-star) 0 1px, transparent 1.5px);
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+}
+
+/* ---------- Nav ---------- */
+html body nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(17, 13, 13, 0.82);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px -18px rgba(0, 0, 0, 0.8);
+}
+
+html body nav a {
+  padding: 1.1rem 1.25rem !important;
+  font-weight: 600;
+}
+
+nav .logo img {
+  border-radius: 0.5rem !important;
+}
+
+nav .logo div {
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Hero ---------- */
+main header {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+main header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+main header h1 strong {
+  background: linear-gradient(120deg, #1fb854, #1eb88e 55%, #1fb8ab);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+main header p.lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.82;
+  max-width: 620px;
+  margin: 0.6rem auto 0;
+}
+
+/* ---------- Section headings ---------- */
+main h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem !important;
+}
+
+main h2::before {
+  content: "";
+  width: 0.35rem;
+  height: 1.1em;
+  flex: none;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #1fb854, #1fb8ab);
+}
+
+/* ---------- Status cards ---------- */
+html article {
+  border-radius: 14px;
+  border-color: var(--card-border-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  transition: transform 180ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+article.link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(31, 184, 84, 0.35);
+  box-shadow: 0 18px 34px -16px rgba(0, 0, 0, 0.65);
+}
+
+article h4 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+article h4 a:hover {
+  color: #1fb854;
+}
+
+main dl dt {
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+main dl dd {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* ---------- Tags ---------- */
+html .tag {
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 72%;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Duration selector (day / week / month / year) ---------- */
+main .live-status form label {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid rgba(202, 201, 201, 0.15);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+main .live-status form input:checked + label {
+  background: #1fb854 !important;
+  border-color: #1fb854 !important;
+  color: #0d0a0a !important;
+  font-weight: 700 !important;
+}
+
+/* ---------- Footer ---------- */
+footer p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+footer p a {
+  color: #1fb854;
+  text-decoration: none;
+}
+
+footer p a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Focus states ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible + label {
+  outline: 2px solid #1fb854;
+  outline-offset: 2px;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2323;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3333;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html article,
+  main .live-status form label,
+  nav a {
+    transition: none;
+  }
+
+  html article.link:hover {
+    transform: none;
+  }
+
+  html body {
+    background-attachment: scroll;
+  }
 }
