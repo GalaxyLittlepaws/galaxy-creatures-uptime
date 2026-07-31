@@ -25,8 +25,37 @@ status-website:
   # baseUrl: /your-repo-name
   logoUrl: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/Logo.png
   favicon: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/favicon.ico
-  # Must be an absolute URL (local paths break the site export)
-  themeUrl: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/galaxy-theme.css
+  # Single theme file (light + dark) served with correct MIME type by jsDelivr.
+  # Served via CDN because GitHub raw rejects stylesheets (text/plain + nosniff)
+  # and local paths break the site export.
+  themeUrl: https://cdn.jsdelivr.net/gh/GalaxyLittlepaws/galaxy-creatures-uptime@master/assets/galaxy-theme.css
+  # Injects the light/dark toggle button into the navbar.
+  customHeadHtml: |
+    <script>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem("gc-theme"); } catch (e) {}
+        var dark = saved === "dark" || (saved === null && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        var btn = document.createElement("button");
+        btn.id = "gc-theme-toggle";
+        btn.type = "button";
+        btn.title = "Toggle theme";
+        btn.textContent = dark ? "\u2600" : "\u263E";
+        btn.addEventListener("click", function () {
+          dark = !dark;
+          document.documentElement.dataset.theme = dark ? "dark" : "light";
+          btn.textContent = dark ? "\u2600" : "\u263E";
+          try { localStorage.setItem("gc-theme", dark ? "dark" : "light"); } catch (e) {}
+        });
+        function mount() {
+          var ul = document.querySelector("nav ul");
+          if (ul) { var li = document.createElement("li"); li.appendChild(btn); ul.appendChild(li); }
+        }
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount);
+        else mount();
+      })();
+    </script>
   name: "Galaxy's Creatures Status"
   introTitle: "**Galaxy's Creatures** service status"
   introMessage: "We run automated checks on our [website](https://galaxyscreatures.com/) and API every 5 minutes. Downtime is posted here as soon as it's detected."
