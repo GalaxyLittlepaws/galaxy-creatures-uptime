@@ -25,10 +25,10 @@ status-website:
   # baseUrl: /your-repo-name
   logoUrl: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/Logo.png
   favicon: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/favicon.ico
-  # Single theme file (light + dark) served with correct MIME type by jsDelivr.
-  # Served via CDN because GitHub raw rejects stylesheets (text/plain + nosniff)
-  # and local paths break the site export.
-  themeUrl: https://cdn.jsdelivr.net/gh/GalaxyLittlepaws/galaxy-creatures-uptime@master/assets/galaxy-theme.css
+  # Single theme file (light + dark), served from the status site itself:
+  # it's copied into the site export and deployed atomically with the page,
+  # so it gets the correct text/css MIME type with no CDN or cache to manage.
+  themeUrl: https://status.galaxyscreatures.com/galaxy-theme.css
   # Injects the light/dark toggle button into the navbar.
   customHeadHtml: |
     <script>
