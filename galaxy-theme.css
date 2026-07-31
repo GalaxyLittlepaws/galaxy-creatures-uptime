@@ -1,24 +1,23 @@
 /* Galaxy's Creatures — status page theme.
-   Dark mode using the daisyUI "forest" palette from galaxyscreatures.com,
-   with a matching cosmic starfield background.
+   Starry night-sky palette, echoing the cosmic look of galaxyscreatures.com.
    Loaded from this repo's assets/ via the status site (see themeUrl).
    Note: this file loads BEFORE status-page's global.css, so rules that must
    beat global.css use the `html` prefix, and scoped component overrides use
    `!important`. */
 
 :root {
-  --body-background-color: #1b1717;
-  --body-text-color: #cac9c9;
-  --card-background-color: #161212;
-  --nav-background-color: #110d0d;
-  --nav-border-bottom-color: rgba(202, 201, 201, 0.1);
-  --nav-current-border-bottom-color: #1fb854;
-  --card-border-color: #2a2323;
+  --body-background-color: #0b1220;
+  --body-text-color: #d6e0f0;
+  --card-background-color: #111a2e;
+  --nav-background-color: #0a101f;
+  --nav-border-bottom-color: rgba(148, 163, 184, 0.14);
+  --nav-current-border-bottom-color: #3b82f6;
+  --card-border-color: #1f2b45;
   --down-border-left-color: #ff5861;
   --down-background-color: #3a1a1e;
   --degraded-border-left-color: #ffbe00;
   --up-border-left-color: #00a96e;
-  --tag-color: #0d0a0a;
+  --tag-color: #0b1220;
   --tag-up-background-color: #00a96e;
   --tag-down-background-color: #ff5861;
   --tag-degraded-background-color: #ffbe00;
@@ -26,19 +25,19 @@
   --error-button-border-color: #00b5ff;
   --error-button-background-color: #0a84c8;
   --error-button-color: #ffffff;
-  --submit-button-border-color: #1fb854;
-  --submit-button-background-color: #1fb854;
+  --submit-button-border-color: #3b82f6;
+  --submit-button-background-color: #3b82f6;
   --submit-button-color: #ffffff;
   --graph-opacity: 1;
 
-  /* Cosmic atmosphere */
-  --gc-glow-primary: rgba(31, 184, 84, 0.16);
-  --gc-glow-secondary: rgba(30, 184, 142, 0.13);
-  --gc-glow-accent: rgba(31, 184, 171, 0.11);
-  --gc-star: rgba(202, 201, 201, 0.1);
+  /* Starry night atmosphere */
+  --gc-glow-primary: rgba(56, 130, 246, 0.18);
+  --gc-glow-secondary: rgba(34, 211, 238, 0.14);
+  --gc-glow-accent: rgba(139, 92, 246, 0.13);
+  --gc-star: rgba(203, 213, 225, 0.14);
 }
 
-/* Cosmic starfield. `html body` outranks global.css' `body` background
+/* Starry night sky. `html body` outranks global.css' `body` background
    shorthand, which would otherwise reset our background-image. */
 html body {
   background-image:
@@ -62,7 +61,7 @@ html body nav {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(17, 13, 13, 0.82);
+  background: rgba(10, 16, 31, 0.82);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 24px -18px rgba(0, 0, 0, 0.8);
@@ -95,7 +94,7 @@ main header h1 {
 }
 
 main header h1 strong {
-  background: linear-gradient(120deg, #1fb854, #1eb88e 55%, #1fb8ab);
+  background: linear-gradient(120deg, #60a5fa, #22d3ee 55%, #a78bfa);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -127,21 +126,21 @@ main h2::before {
   height: 1.1em;
   flex: none;
   border-radius: 999px;
-  background: linear-gradient(180deg, #1fb854, #1fb8ab);
+  background: linear-gradient(180deg, #3b82f6, #22d3ee);
 }
 
 /* ---------- Status cards ---------- */
 html article {
   border-radius: 14px;
   border-color: var(--card-border-color);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   transition: transform 180ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 article.link:hover {
   transform: translateY(-2px);
-  border-color: rgba(31, 184, 84, 0.35);
-  box-shadow: 0 18px 34px -16px rgba(0, 0, 0, 0.65);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 18px 34px -16px rgba(0, 0, 0, 0.7);
 }
 
 article h4 {
@@ -150,7 +149,7 @@ article h4 {
 }
 
 article h4 a:hover {
-  color: #1fb854;
+  color: #60a5fa;
 }
 
 main dl dt {
@@ -178,7 +177,7 @@ html .tag {
 main .live-status form label {
   display: inline-block;
   padding: 0.35rem 0.85rem;
-  border: 1px solid rgba(202, 201, 201, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 999px;
   font-size: 0.85rem;
   cursor: pointer;
@@ -186,9 +185,9 @@ main .live-status form label {
 }
 
 main .live-status form input:checked + label {
-  background: #1fb854 !important;
-  border-color: #1fb854 !important;
-  color: #0d0a0a !important;
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
   font-weight: 700 !important;
 }
 
@@ -199,7 +198,7 @@ footer p {
 }
 
 footer p a {
-  color: #1fb854;
+  color: #60a5fa;
   text-decoration: none;
 }
 
@@ -211,7 +210,7 @@ footer p a:hover {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible + label {
-  outline: 2px solid #1fb854;
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
@@ -222,12 +221,12 @@ input:focus-visible + label {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2323;
+  background: #1f2b45;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3333;
+  background: #2a3a5c;
 }
 
 ::-webkit-scrollbar-track {
