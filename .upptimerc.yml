@@ -9,6 +9,9 @@ assignees:
 secrets:
   - SITE_API
 
+skipDeleteIssues: true
+skipPoweredByReadme: true
+
 sites:
   - name: "Galaxy's Creatures Website"
     url: https://galaxyscreatures.com/
@@ -22,7 +25,8 @@ status-website:
   # baseUrl: /your-repo-name
   logoUrl: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/Logo.png
   favicon: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/favicon.ico
-  theme: night
+  # Must be an absolute URL (local paths break the site export)
+  themeUrl: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/galaxy-theme.css
   name: "Galaxy's Creatures Status"
   introTitle: "**Galaxy's Creatures** service status"
   introMessage: "We run automated checks on our [website](https://galaxyscreatures.com/) and API every 5 minutes. Downtime is posted here as soon as it's detected."
@@ -31,8 +35,9 @@ status-website:
       href: /
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
-  i18n:
-    footer: "[Galaxy's Creatures](https://galaxyscreatures.com/) service status"
+
+i18n:
+  footer: "[Galaxy's Creatures](https://galaxyscreatures.com/) service status"
 
 # Upptime also supports notifications, assigning issues, and more
 # See https://upptime.js.org/docs/configuration

@@ -1,0 +1,40 @@
+:root {
+  /* Galaxy's Creatures — daisyUI "forest" theme (dark) */
+  --body-background-color: #1b1717;
+  --body-text-color: #cac9c9;
+  --card-background-color: #161212;
+  --nav-background-color: #110d0d;
+  --nav-border-bottom-color: #110d0d;
+  --nav-current-border-bottom-color: #1fb854;
+  --card-border-color: #110d0d;
+  --down-border-left-color: #ff5861;
+  --down-background-color: #4a1d20;
+  --degraded-border-left-color: #ffbe00;
+  --up-border-left-color: #00a96e;
+  --tag-color: #1b1717;
+  --tag-up-background-color: #00a96e;
+  --tag-down-background-color: #ff5861;
+  --tag-degraded-background-color: #ffbe00;
+  --change-background-color: #ffbe00;
+  --error-button-border-color: #00b5ff;
+  --error-button-background-color: #0a84c8;
+  --error-button-color: #ffffff;
+  --submit-button-border-color: #1fb854;
+  --submit-button-background-color: #1fb854;
+  --submit-button-color: #ffffff;
+  --graph-opacity: 1;
+}
+
+/* Cosmic atmosphere, matching GalaxysCreatures starfield */
+body {
+  background-image:
+    radial-gradient(1000px 520px at 12% 8%, rgba(31, 184, 84, 0.12), transparent 72%),
+    radial-gradient(840px 460px at 88% 82%, rgba(30, 184, 142, 0.1), transparent 74%),
+    radial-gradient(700px 320px at 50% 100%, rgba(31, 184, 171, 0.08), transparent 72%),
+    radial-gradient(circle at 18% 22%, rgba(202, 201, 201, 0.08) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 77% 36%, rgba(202, 201, 201, 0.06) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 68%, rgba(202, 201, 201, 0.05) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 61% 14%, rgba(202, 201, 201, 0.06) 0 1px, transparent 1.5px);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
