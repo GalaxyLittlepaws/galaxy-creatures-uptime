@@ -20,8 +20,8 @@ status-website:
   # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
   cname: status.galaxyscreatures.com
   # baseUrl: /your-repo-name
-  logoUrl: /Logo.png
-  favicon: /favicon.ico
+  logoUrl: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/Logo.png
+  favicon: https://raw.githubusercontent.com/GalaxyLittlepaws/galaxy-creatures-uptime/master/assets/favicon.ico
   theme: night
   name: "Galaxy's Creatures Status"
   introTitle: "**Galaxy's Creatures** service status"
