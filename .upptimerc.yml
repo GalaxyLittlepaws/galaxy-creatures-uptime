@@ -35,6 +35,8 @@ status-website:
   navbar:
     - title: "Galaxy's Creatures Status"
       href: /
+    - title: Website
+      href: https://galaxyscreatures.com/
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
 
